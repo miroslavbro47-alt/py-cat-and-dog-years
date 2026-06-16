@@ -13,6 +13,6 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
             extra = (animal_age - (first_year + 9)) // step
             return 2 + extra
 
-    cat_human = convert_to_human(cat_age, 15, 4)  # правильно для задачі
+    cat_human = convert_to_human(cat_age, 15, 4)
     dog_human = convert_to_human(dog_age, 15, 5)
     return [cat_human, dog_human]

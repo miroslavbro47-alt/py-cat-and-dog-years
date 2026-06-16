@@ -14,6 +14,7 @@ from app.main import get_human_age
         (30, 50, [3, 7]),
         (35, 80, [4, 13]),
         (40, 100, [6, 17]),
+        (1000, 1000, [246, 197])
     ]
 )
 def test_get_human_age(cat_age: int,
@@ -21,3 +22,16 @@ def test_get_human_age(cat_age: int,
                        expected_human_age: list
                        ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_human_age
+
+
+def test_negative_age_raises_error():
+    with pytest.raises(ValueError):
+        get_human_age(-1, 10)
+
+    with pytest.raises(ValueError):
+        get_human_age(10, -1)
+
+
+@pytest.mark.parametrize("age", [14, 15])
+def test_boundary_values(age):
+    assert get_human_age(age, 0)[0] == 0 if age < 15 else 1
